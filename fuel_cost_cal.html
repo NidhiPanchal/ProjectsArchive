@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--the following app allows user to calculate milage -->
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="milage calculator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
+
+    </head>
+
+    <style>
+    body, html, div{
+        margin:0;
+        padding: 0;
+        color:#C4B69A;
+        font-size:16px;
+    }
+
+    body{
+        background-color: #143441;
+        color: #fff;
+    }
+
+    .display-4{
+        font-size:5em;
+        margin-top:20%;
+        font-style: italic;
+        border-bottom:2px dotted #C4B69A;
+        color:#C4B69A;
+        margin-bottom:10%;
+        font-weight: 500;
+    }
+
+    .main-page p{
+        font-size: 2em;
+        font-style: italic;
+        color: #C4B69A;
+        text-decoration: underline dotted #C4B69A;
+        margin-bottom:5%;
+    }
+
+    .form1 .form-control {
+        margin-bottom:2%;
+    }
+
+    .form1 label{
+        font-size:1.3em;
+        font-style: italic;
+    }
+    .card .card-title{
+        font-size:2.5em;
+        border-bottom:1px solid #fff;
+    }
+    .op{
+        color:#fff;
+        font-size :5em;
+    }
+    footer{
+        text-align: center;
+        margin:6% 0 6% 0;
+        border-top:1px dotted #C4B69A;
+        font-style:italic;
+    }
+    </style>
+
+    <body>
+        <!--main content-->
+        <div class="main-page">
+            <div class="container">
+                <h1 class="display-4 text-center mt-4">FUEL & MILEAGE CALCULATOR</h1>
+
+                <p class="display-2">Enter Details Below: </p>
+
+                <form action="" class="form-group form1">
+                    <label for="Fuel-Efficiency">Fuel Efficiency : </label>
+                    <small><i>(Enter the distance covered by your vehicle in 1 liters)</i></small>
+                    <input type="text" class=" form-control " id="fuel-eff" name="Fuel-Efficiency" autocomplete="off">
+
+                    <label for="proce">Gas/Fuel Price : </label>
+                    <small><i>(Enter Price of 1 liter fuel)</i></small>
+                    <input type="text" class=" form-control " id="price" name="price" autocomplete="off">
+
+                    <label for="distance">Trip Distance : </label>
+                    <small><i>(Enter the distance to be covered)</i></small>
+                    <input type="text" class=" form-control " id="distance" name="distance" autocomplete="off">
+
+                    <button type="submit" class="btn btn-success col-md-3" value="CALCULATE" id="calculate" onclick="total_amount(); return false">CALCULATE</button>
+                </form>
+
+                <!--output display area-->
+                <div class="output">
+                    <div class="row">
+                        <div class="cost col-md-6">
+                            <div class="card bg-primary">
+                                <div class="card-body">
+                                    <div class="card-title  text-white">COST</div>
+                                    <div class="card-substitute text-white"><i>Total cost for the trip fuel</i></div> 
+                                    <div id="op-cost" class="op">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fuel col-md-6">
+                            <div class="card bg-success">
+                                <div class="card-body">
+                                    <div class="card-title  text-white">FUEL</div>
+                                    <div class="card-substitute text-white"><i>Total fuel required</i></div>
+                                    <div id="op-fuel" class="op"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <footer>
+                            Copyright &copy; 1/1/2019 By Nidhi Panchal
+                    </footer>   
+                </div>
+            </div>
+        </div>
+        <!--main ends here-->
+        
+        <script>
+          /*  var fuel, price, di;
+
+            fuel = document.getElementsByClassName('fuel-eff').value;
+            price = document.getElementsByClassName('price').value;
+            di = document.getElementByClassName('distance').value;
+
+            //formulas to calculate 
+            function total_calculate(){
+                var op_fuel = di / fuel;//gives total llilters
+                var op_cost = op_fuel * price;//gives total cost
+            }
+            */
+           
+            function total_amount(){
+                var fuel = document.getElementById('fuel-eff').value;
+                var distance = document.getElementById('distance').value;
+                var price = document.getElementById('price').value;
+
+                var f = parseInt(fuel);
+                var d = parseInt(distance);
+                var p = parseInt(price)
+                
+                var op_fuel = d / f;
+                var op_cost = op_fuel * p;
+
+                document.getElementById('op-cost').innerHTML += op_cost.toFixed(2);
+                document.getElementById('op-fuel').innerHTML += op_fuel.toFixed(2);
+
+                
+            }
+            
+            
+        </script>
+    </body>
+</html>
